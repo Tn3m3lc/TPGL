@@ -1,3 +1,4 @@
+package anthonyclement.tp1;
 //import com.sun.istack.internal.logging.Logger;
 import java.util.logging.Logger;
 import org.junit.*;
