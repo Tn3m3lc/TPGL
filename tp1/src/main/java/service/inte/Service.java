@@ -1,11 +1,11 @@
 package service.inte;
 
 public interface Service {
-	public abstract void sauvegarder();
+	public abstract void sauvegarder(Object o);
 	
-	public abstract void extraire();
+	public abstract Object extraire(String id);
 	
-	public abstract void lireFichier();
+	public abstract Object lireFichier(String chemin);
 	
-	public abstract void ecrire();
+	public abstract void ecrire(String chemin,Object o);
 }
