@@ -13,13 +13,13 @@ public class FilmDao implements GeneralDao {
 		
 		try {
 			// init connection + statement
-			Connection connect = ConnexionBd.getInstance().creerConnexion("cb454580", "", false);
+			Connection connect = ConnexionBd.getInstance().creerConnexion();
 			DatabaseMetaData dbmd = connect.getMetaData();
 			dbmd.getDefaultTransactionIsolation();
 			connect.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			Statement stmt = connect.createStatement();
 			
-			String query = "INSERT INTO FILM VALUES("+film.getId()+",'"+film.getNom()+"','"+film.getSortie().toString()+"')";
+			String query = "INSERT INTO FILM VALUES("+film.getId()+",'"+film.getNom()+"','"+film.getSortie()+"')";
 			stmt.executeQuery(query);
 			
 			// fermeture des objets
@@ -38,7 +38,7 @@ public class FilmDao implements GeneralDao {
 		Film film = new Film();
 		try {
 			// init connection + statement
-			Connection connect = ConnexionBd.getInstance().creerConnexion("cb454580", "", false);
+			Connection connect = ConnexionBd.getInstance().creerConnexion();
 			DatabaseMetaData dbmd = connect.getMetaData();
 			dbmd.getDefaultTransactionIsolation();
 			connect.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
@@ -49,10 +49,11 @@ public class FilmDao implements GeneralDao {
 			ResultSet res = stmt.executeQuery(query);
 			
 			// parse resultat dans une string 
+			res.next();
 			int columnCount = res.getMetaData().getColumnCount();
 			String description = "";
 			for(int i=1; i < columnCount+1; i++){
-				description += (res.getString(i));
+				description += res.getString(i)+";";
 			}
 			
 			// fermeture des objets

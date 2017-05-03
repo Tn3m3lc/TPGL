@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.ArrayList;
+
 import service.inte.Service;
 import utils.FileUtils;
 import model.impl.Film;
@@ -17,15 +19,20 @@ public class FilmService implements Service {
 		return dao.recuperer(id);
 	}
 
-	public Object lireFichier(String chemin) {
+	public ArrayList<Object> lireFichier(String chemin) {
 		String description = FileUtils.getInstance().lire(chemin);
-		return new Film(description);
+		String[] listeFilms = description.split("\n");
+		ArrayList<Object> arrayList = new ArrayList<Object>();
+		for(int i=0;i<listeFilms.length;i++){
+			Film f = new Film(listeFilms[i]);
+			arrayList.add(f);
+		}
+		return arrayList;
 	}
 
 	public void ecrire(String chemin, Object o) {
 		Film film = (Film)o;
 		FileUtils.getInstance().ecrire(chemin,film.toString());
 	}
-
 
 }

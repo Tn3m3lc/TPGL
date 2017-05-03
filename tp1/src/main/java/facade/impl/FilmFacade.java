@@ -1,17 +1,24 @@
 package facade.impl;
 
+import java.util.ArrayList;
+
+import service.impl.FilmService;
 import facade.inte.Facade;
 
 public class FilmFacade implements Facade {
 
 	public void fichierVersBase(String chemin) {
-		// TODO Stub de la méthode généré automatiquement
-		
+		FilmService fs = new FilmService();
+		ArrayList<Object> listFilms = fs.lireFichier(chemin);
+		for(Object o : listFilms){
+			fs.sauvegarder(o);
+		}
 	}
 
 	public void baseVersFichier(String chemin, String id) {
-		// TODO Stub de la méthode généré automatiquement
-		
+		FilmService fs = new FilmService();
+		Object f = fs.extraire(id);
+		fs.ecrire(chemin, f);
 	}
 
 }

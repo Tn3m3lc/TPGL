@@ -4,7 +4,10 @@ import java.sql.*;
 public class ConnexionBd {
 	
 	private static ConnexionBd Instance = null;
-
+	private String utilisateur = "cb454580";
+	private String password = "cb454580";
+	private boolean exterieur = false;
+	
 	private ConnexionBd(){
 		
 	}
@@ -16,7 +19,7 @@ public class ConnexionBd {
 		return Instance;
 	}
 	
-	public Connection creerConnexion(String utilisateur,String password,boolean exterieur) throws SQLException{
+	public Connection creerConnexion() throws SQLException{
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 			} catch (ClassNotFoundException e) {

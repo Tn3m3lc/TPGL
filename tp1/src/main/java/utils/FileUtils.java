@@ -30,7 +30,7 @@ public class FileUtils {
 			BufferedReader ficTexte = new BufferedReader(new FileReader(new File(chemin)));
 			String ligne;
 			while ((ligne=ficTexte.readLine())!=null){
-				data+=ligne;
+				data+=ligne+'\n';
 			}
 			
 			ficTexte.close();
@@ -45,8 +45,11 @@ public class FileUtils {
 	
 	public void ecrire(String chemin, String data){
 		try {
-			BufferedWriter ficTexte = new BufferedWriter(new FileWriter(new File(chemin)));
-			
+			File f = new File(chemin);
+			if(!f.exists())
+				f.createNewFile();
+		
+			BufferedWriter ficTexte = new BufferedWriter(new FileWriter(f));
 			ficTexte.write(data);
 			
 			ficTexte.close();

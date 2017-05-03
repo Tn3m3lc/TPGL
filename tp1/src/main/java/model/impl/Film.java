@@ -6,13 +6,13 @@ import java.util.Date;
 
 public class Film {
 	private String Nom;
-	private Date Sortie;
+	private String Sortie;
 	private String Id;
 	
 	public Film(){
 		Id = "";
 		Nom = "";
-		Sortie = new Date();
+		Sortie = "";
 	}
 	
 	public Film(String Description){
@@ -36,7 +36,7 @@ public class Film {
 		return Nom;
 	}
 	
-	public Date getSortie(){
+	public String getSortie(){
 		return Sortie;
 	}
 	
@@ -48,7 +48,7 @@ public class Film {
 		Nom = NewNom;
 	}
 	
-	public void setSortie(Date NewSortie){
+	public void setSortie(String NewSortie){
 		Sortie = NewSortie;
 	}
 	
@@ -65,18 +65,13 @@ public class Film {
 				setNom(Valeur);
 				break;
 			case 2:
-				try {
-					setSortie(DateFormat.getInstance().parse(Valeur));
-				} catch (ParseException e) {
-					// format invalide
-					e.printStackTrace();
-				}
+				setSortie(Valeur);
 				break;
 		}
 	}
 	@Override
 	public String toString(){
-		return Id+";"+Nom+";"+Sortie.toString();
+		return Id+";"+Nom+";"+Sortie;
 	}
 	
 	
