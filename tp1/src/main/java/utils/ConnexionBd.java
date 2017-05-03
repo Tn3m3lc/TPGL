@@ -24,9 +24,9 @@ public class ConnexionBd {
 				e.printStackTrace();
 			}
 			if(!exterieur){
-				return DriverManager.getConnection("jdbc:oracle:thin:@toto",utilisateur,password);
+				return DriverManager.getConnection("jdbc:oracle:thin:@butor:1521:ensb2016",utilisateur,password);
 			}else{
-				return DriverManager.getConnection("jdbc:oracle:thin:@toto",utilisateur,password);
+				return DriverManager.getConnection("jdbc:oracle:thin:@ufrsciencestech.u-bourgogne.fr:25561:ensb2016",utilisateur,password);
 			}
 	}
 	
